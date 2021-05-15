@@ -1,8 +1,10 @@
 package com.sz.mangosteeneg.ui.viewmodel;
 
 import android.app.Application;
+import android.view.View;
 
 import androidx.annotation.NonNull;
+import androidx.databinding.ObservableField;
 import androidx.lifecycle.MutableLiveData;
 
 import com.sz.mangosteeneg.base.BaseAppViewModel;
@@ -23,8 +25,10 @@ import java.util.List;
 public class TestMvvmViewModel extends BaseAppViewModel {
 
     public MutableLiveData<CityAreasBean> liveAddress = new MutableLiveData<>();
-
     public MutableLiveData<List<String>> liveString = new MutableLiveData<>();
+
+    //文本内容
+    public ObservableField<String> name = new ObservableField<>();
 
     //获取地址数据
     public void reqAddress(){
@@ -47,6 +51,12 @@ public class TestMvvmViewModel extends BaseAppViewModel {
             list.add("扫地欧尼"+i);
         }
         liveString.setValue(list);
+        name.set("文本改变");
+    }
+
+    //文本的点击事件
+    public void click(View view){
+        ToastUtils.showShort("文本被点击");
     }
 
     public TestMvvmViewModel(@NonNull Application application) {

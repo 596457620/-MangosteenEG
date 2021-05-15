@@ -10,5 +10,4 @@ import androidx.databinding.ViewDataBinding;
  */
 public abstract class AppBaseFragment<V extends ViewDataBinding, VM extends BaseAppViewModel> extends BaseFragment {
 
-
 }

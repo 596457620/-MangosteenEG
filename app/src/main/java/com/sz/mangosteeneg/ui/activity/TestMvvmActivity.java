@@ -70,10 +70,10 @@ public class TestMvvmActivity extends AppBaseActivity<ActivityTestBinding, TestM
         addressAdapter.setNewData(list);
     }
 
+    //获取databinding和viewmodel的两个方法
     public ActivityTestBinding getBinding(){
         return (ActivityTestBinding) binding;
     }
-
     public TestMvvmViewModel getVM(){
         return (TestMvvmViewModel)viewModel;
     }
