@@ -30,18 +30,19 @@ public class TestMvvmActivity extends AppBaseActivity<ActivityTestBinding, TestM
 
     //数据源，适配器
     private AddressAdapter addressAdapter;
-    private List<CityAreasBean.DataBean.ListBean.ProvinceWithCityModelsBean> list = new ArrayList<>();
+    private List<String> list = new ArrayList<>();
 
     @Override
     public void initData() {
         super.initData();
+        showFullScreen(true);
         //初始化
         first();
         //监听
         monitor();
         //请求网络
-        getVM().reqAddress();
-        onBackPressed();
+//        getVM().reqAddress();
+        getVM().reqJiade();
     }
 
     private void first(){
@@ -54,15 +55,19 @@ public class TestMvvmActivity extends AppBaseActivity<ActivityTestBinding, TestM
     }
 
     private void monitor(){
-        //监听网络请求的结果
+        //监听网络请求的结果(接口地址我删了，请求不出来)
         getVM().liveAddress.observe(this,res -> {
-            setRecyclerView(res);
+//            setRecyclerView(res);
+        });
+        //假装的网络请求
+        getVM().liveString.observe(this,list1 -> {
+            setRecyclerView(list1);
         });
     }
 
     //设置列表
-    private void setRecyclerView(CityAreasBean bean){
-        addressAdapter.setNewData(bean.getData().getList().get(4).getProvinceWithCityModels());
+    private void setRecyclerView(List<String> list){
+        addressAdapter.setNewData(list);
     }
 
     public ActivityTestBinding getBinding(){

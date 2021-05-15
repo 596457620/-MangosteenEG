@@ -1,6 +1,7 @@
 package com.sz.mangosteeneg.ui.activity;
 
 import android.content.Intent;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.view.View;
 
@@ -37,6 +38,7 @@ public class MainActivity extends AppBaseActivity<ActivityMainBinding, MainViewM
     @Override
     public void initData() {
         super.initData();
+        showFullScreen(true);
         recyclerView = getBinding().mainRl;
         addRl();
         setRecyclerView();
@@ -47,6 +49,9 @@ public class MainActivity extends AppBaseActivity<ActivityMainBinding, MainViewM
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         txtAdapter = new TxtAdapter(R.layout.item_txt_center,list);
         recyclerView.setAdapter(txtAdapter);
+        if(recyclerView.getItemDecorationCount() == 0){
+            recyclerView.addItemDecoration(new MyDecoration());
+        }
         txtAdapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(@NonNull BaseQuickAdapter<?, ?> adapter, @NonNull View view, int position) {
@@ -77,5 +82,14 @@ public class MainActivity extends AppBaseActivity<ActivityMainBinding, MainViewM
     @Override
     public int initVariableId() {
         return BR.mainViewModel;
+    }
+
+    //recyclerview工具类
+    class MyDecoration extends RecyclerView.ItemDecoration{
+        @Override
+        public void getItemOffsets(@NonNull Rect outRect, @NonNull View view, @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
+            super.getItemOffsets(outRect, view, parent, state);
+            outRect.set(16,10,16,10);
+        }
     }
 }

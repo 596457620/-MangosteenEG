@@ -13,7 +13,7 @@ import androidx.lifecycle.OnLifecycleEvent;
  */
 public interface IBaseViewModel extends LifecycleObserver {
     /**
-     * @description 使用Lifecycle结合ViewModel观察生命周期
+     * @description 使用Lifecycle结合ViewModel同步生命周期
      * @author mi
      * @time 2021/5/14 15:19
      */

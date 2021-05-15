@@ -17,15 +17,15 @@ import java.util.List;
  * @email: 15090708443@163.com
  * @Description:
  */
-public class AddressAdapter extends BaseQuickAdapter<CityAreasBean.DataBean.ListBean.ProvinceWithCityModelsBean, BaseViewHolder> {
-    public AddressAdapter(int layoutResId, @Nullable List<CityAreasBean.DataBean.ListBean.ProvinceWithCityModelsBean> data) {
+public class AddressAdapter extends BaseQuickAdapter<String, BaseViewHolder> {
+    public AddressAdapter(int layoutResId, @Nullable List<String> data) {
         super(layoutResId, data);
     }
 
     @Override
-    protected void convert(@NotNull BaseViewHolder holder, CityAreasBean.DataBean.ListBean.ProvinceWithCityModelsBean item) {
-        if(StringUtil.isNotEmpty(item.getName())){
-            holder.setText(R.id.tv_str,item.getName());
+    protected void convert(@NotNull BaseViewHolder holder, String item) {
+        if(StringUtil.isNotEmpty(item)){
+            holder.setText(R.id.tv_str,item);
         }
     }
 }

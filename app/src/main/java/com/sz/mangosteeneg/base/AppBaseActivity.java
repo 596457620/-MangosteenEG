@@ -36,16 +36,11 @@ public abstract class AppBaseActivity<V extends ViewDataBinding, VM extends Base
 
     }
 
-    //    @Override
-    //    public int initContentView(Bundle savedInstanceState) {
-    //        return 0;
-    //    }
-    //
-    //    @Override
-    //    public int initVariableId() {
-    //        return 0;
-    //    }
-
+    /**
+     * @description 防重点
+     * @author mi
+     * @time 2021/5/15 15:28
+     */
     protected void showSoftInputKetboard(final EditText editText) {
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -64,7 +59,7 @@ public abstract class AppBaseActivity<V extends ViewDataBinding, VM extends Base
     }
 
     /**
-     * 全屏显示
+     * 沉浸式，这种要在AndroidManifest去除Android自带的头，并结合toolbar效果才好
      */
     protected void showFullScreen(boolean full) {
         Window window = getWindow();
@@ -75,7 +70,7 @@ public abstract class AppBaseActivity<V extends ViewDataBinding, VM extends Base
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.setStatusBarColor(Color.TRANSPARENT);
         }
-        //true 为白，false 为黑(透明)
+        //true 为白底黑字，false 为黑(透明)底白字
         if(full){
             //6.0以上可以使用
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
